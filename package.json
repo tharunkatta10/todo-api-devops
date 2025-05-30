@@ -1,12 +1,18 @@
 {
-  "name": "todo-api",
+  "name": "todo-api-devops",
   "version": "1.0.0",
+  "description": "A simple TODO API for DevOps internship tasks",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "echo \"No tests yet\" && exit 0"
   },
+  "author": "Tharun Katta",
+  "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5"
   }
 }
 
