@@ -1,25 +1,43 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-
-// Middleware
-app.use(express.json());
-
-// Sample route for health check
-app.get("/", (req, res) => {
-  res.send("Todo API is live! ✅");
-});
-
-// Example Todo route (can add more logic later)
-app.get("/todos", (req, res) => {
-  res.json([
-    { id: 1, title: "Learn Docker" },
-    { id: 2, title: "Deploy to Render" },
-  ]);
-});
-
-// Use PORT from environment or fallback to 3000
 const PORT = process.env.PORT || 3000;
 
+// Middleware to parse JSON
+app.use(express.json());
+
+// Sample in-memory todo list
+let todos = [
+  { id: 1, task: 'Learn Docker', completed: false },
+  { id: 2, task: 'Deploy with Render', completed: true },
+];
+
+// Root route
+app.get('/', (req, res) => {
+  res.send('Hello from TODO API!');
+});
+
+// GET all todos
+app.get('/todos', (req, res) => {
+  res.json(todos);
+});
+
+// POST a new todo
+app.post('/todos', (req, res) => {
+  const newTodo = {
+    id: todos.length + 1,
+    task: req.body.task,
+    completed: false,
+  };
+  todos.push(newTodo);
+  res.status(201).json(newTodo);
+});
+
+// Health check
+app.get('/health', (req, res) => {
+  res.send('OK');
+});
+
+// Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
