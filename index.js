@@ -1,36 +1,23 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 
+// Middleware
 app.use(express.json());
 
-let todos = [];
-
-// Get all todos
-app.get('/todos', (req, res) => {
-  res.json(todos);
+// Sample route for health check
+app.get("/", (req, res) => {
+  res.send("Todo API is live! ✅");
 });
 
-// Add a new todo
-app.post('/todos', (req, res) => {
-  const todo = req.body;
-  if (!todo || !todo.task) {
-    return res.status(400).json({ error: 'Todo must have a task' });
-  }
-  todos.push(todo);
-  res.status(201).json(todo);
+// Example Todo route (can add more logic later)
+app.get("/todos", (req, res) => {
+  res.json([
+    { id: 1, title: "Learn Docker" },
+    { id: 2, title: "Deploy to Render" },
+  ]);
 });
 
-// Delete a todo by index
-app.delete('/todos/:index', (req, res) => {
-  const index = parseInt(req.params.index);
-  if (isNaN(index) || index < 0 || index >= todos.length) {
-    return res.status(400).json({ error: 'Invalid index' });
-  }
-  const deleted = todos.splice(index, 1);
-  res.json(deleted[0]);
-});
-
-// Use port from environment or default 3000
+// Use PORT from environment or fallback to 3000
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
