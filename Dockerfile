@@ -1,17 +1,19 @@
-# Use official lightweight Node.js image
-FROM node:16-alpine
+# Use official Node.js LTS image
+FROM node:18-alpine
 
 # Set working directory
 WORKDIR /app
 
-# Copy package files and install dependencies
+# Copy package files
 COPY package*.json ./
-RUN npm install
 
-# Copy rest of the source code
+# Install dependencies
+RUN npm install --production
+
+# Copy rest of the app
 COPY . .
 
-# Expose the port your app listens on
+# Expose port
 EXPOSE 3000
 
 # Start the app
