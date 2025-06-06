@@ -1,85 +1,95 @@
-# 📝 ToDo API - DevOps Internship Project
+# 📝 Todo API – DevOps Internship Final Project
 
-This is a simple **Node.js CRUD API** built as part of a DevOps internship. It manages a list of todos using in-memory data, and demonstrates containerization, CI/CD with GitHub Actions, and cloud deployment using Render.
+This is a simple **CRUD Todo API** built using **Node.js** and deployed using **Docker**, **GitHub Actions CI/CD**, and **Render**.
 
----
-
-## 📦 Features
-
-- Full CRUD functionality (Create, Read, Update, Delete)
-- RESTful API design
-- Logging using `morgan`
-- Dockerized for easy deployment
-- Deployed on [Render](https://render.com)
-- CI/CD via GitHub Actions
+> 🚀 **Live App**: [https://todo-api-devops.onrender.com](https://todo-api-devops.onrender.com)
 
 ---
 
-## 🚀 Live API
+## 📁 Project Structure
 
-🌐 [https://todo-api-devops.onrender.com](https://todo-api-devops.onrender.com)
-
----
-
-## 🛠️ Installation (Local Setup)
-
-```bash
-git clone https://github.com/tharunkatta10/todo-api-devops.git
-cd todo-api-devops
-npm install
-npm start
-📦 Docker Instructions
-Build Docker Image
-bash
-Copy
-Edit
-docker build -t todo-api .
-Run the Container
-bash
-Copy
-Edit
-docker run -p 3000:3000 todo-api
-Visit http://localhost:3000 in your browser or use Postman.
-
-🧪 API Endpoints
-Method	Route	Description
-GET	/	Welcome message
-GET	/health	Health check status
-GET	/todos	Get all todos
-POST	/todos	Add a new todo
-PUT	/todos/:id	Update a todo by ID
-DELETE	/todos/:id	Delete a todo by ID
-
-Use tools like Postman, curl, or browser (for GET routes).
-
-⚙️ CI/CD with GitHub Actions
-This project includes a GitHub Actions workflow:
-
-Runs automatically on push to main
-
-Installs dependencies
-
-(Optional) Runs tests
-
-Deploys to Render automatically
-
-File: .github/workflows/main.yml
-
-📂 Project Structure
-pgsql
-Copy
-Edit
+todo-api-devops/
+├── Dockerfile
+├── .github/workflows/main.yml
 ├── index.js
 ├── package.json
-├── Dockerfile
-├── .dockerignore
-├── .github
-│   └── workflows
-│       └── main.yml
-└── README.md
-🧑‍💻 Author
-Tharun Katta
+├── README.md
+└── deployment_guide.md
 
-GitHub: tharunkatta10
+yaml
+Copy
+Edit
 
+---
 
+## 📌 Features
+
+- ✅ Simple Express-based Node.js API
+- ✅ GET `/` — Welcome message
+- ✅ GET `/health` — Returns health status
+- ✅ GET `/todos` — Returns static list of todos
+- ✅ Logging with Morgan middleware
+- ✅ Dockerized using `Dockerfile`
+- ✅ GitHub Actions CI/CD Workflow
+- ✅ Live auto-deployment to Render
+
+---
+
+## 🚀 API Endpoints
+
+| Method | Endpoint                  | Description                |
+|--------|---------------------------|----------------------------|
+| GET    | `/`                       | Welcome message            |
+| GET    | `/health`                 | Health check               |
+| GET    | `/todos`                  | Returns list of todos      |
+
+---
+
+## 🐳 Docker Commands (for local run)
+
+```bash
+# Build Docker image
+docker build -t todo-api .
+
+# Run container
+docker run -p 3000:3000 todo-api
+🤖 GitHub Actions CI/CD
+Workflow file: .github/workflows/main.yml
+
+Automatically builds Docker image and deploys to Render on every git push
+
+🌐 Deployment
+Cloud Provider: Render
+
+GitHub integration for auto-deployments
+
+Docker-based web service deployment
+
+👨‍💻 Developer Info
+Name: Tharun Katta
+
+GitHub: @tharunkatta10
+
+Project ID: CCG25101
+
+Internship: Code Core Global – DevOps Internship (4 Weeks)
+
+📄 Related Files
+deployment_guide.md – Step-by-step deployment instructions
+
+Dockerfile – Containerization setup
+
+main.yml – GitHub Actions CI/CD workflow
+
+✅ Final Deliverables
+ GitHub repo with working code
+
+ Dockerfile for containerization
+
+ GitHub Actions CI/CD
+
+ Deployed live on Render
+
+ README.md + deployment_guide.md
+
+🙌 Thank you for reviewing my internship project!
